@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+  <head>
+	  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	  <meta name="keywords" content="иванова елена алена олена ковташ дизайн фирменный стиль логотип цвет композиция макет верстка реклама журнал глянцевый журнал периодика полиграфия цветокоррекция медиа мультимедиа промоушн топ-бьюти космополитан каллиграфия графика графические работы рисунок от руки иллюстрация сайт ip-телефония 1rock рбк красота рубрика тренд мода разворот полоса корпоративный дизайн ГИС-ассоциация приглашение mamap&papas philips ракурс micallef вайт-медиа interhomeexpo комикс мастер и маргарита булгаков жизнь насекомых пелевин открытка инфографика иконка векторная графика растровая графика каталог ежегодный отчет шрифт буква газеты буклет вывеска визитка плакат обложка диплом мгу факультет журналистики диск Ivanova Elena Olena Olena kovtash design corporate identity logo color track layout layout advertising magazine glossy magazine periodicals printing color correction media multimedia promotion top beauty Cosmopolitan calligraphy graphic graphic works freehand illustration site ip-telephony 1rock RBK beauty topic trend fashion spread strip corporate design GIS-Association invitation mamap & papas philips racurs micallef wite-Media interhomeexpo Comics Master and Margarita Bulgakov Pelevin insect life postcard infographics icon vector raster graphics directory annual report letter newspaper business card brochure sign poster cover Diploma Moscow State University Department of Journalism disk"/>
+	  <meta name='yandex-verification' content='756273291e442003' />
+	  <meta name="google-site-verification" content="fyqFz8hySgeaE07RoY9tHVFku181tE31NuLpgi87wWQ" />
+
+	  <title>Елена Ковташ. Дизайнер</title>
+	  <link rel="stylesheet" type="text/css" href="/src/themes/striped/main.css" />
+	  <link rel="shortcut icon" href="src/themes/striped/favicon.ico"/>
+	  
+	  <style type="text/css">
+	  	{% for block in Photosets%}
+	    	{% for Photoset in block.Block_content %}
+	  			#pset_{{Photoset.photoset_id}} {
+	  				background-image:url('{{ Photoset.thumbnail_url }}');
+	  			}
+	  		{% endfor %}
+	  	{% endfor %}
+	   </style>
+	   
+	   
+		<!-- Google Analytics-->
+	    <script type="text/javascript">
+		
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-20850399-1']);
+		  _gaq.push(['_trackPageview']);
+		
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		
+		</script>    
+		<!--Google Analytics-->
+  </head>
+  
+  
+  
+  <body>
+	  <div class='center1'>
+	  <div class='center2'>
+	  <div class='center3'>
+		<div class="pset_block">
+		{% for block in Photosets%}
+	    	{% for Photoset in block.Block_content %}
+	    	{% ifequal block.Block_id 1%}
+	    
+			<a href="{{GetPhotoset_url}}{{ Photoset.photoset_id }}" class='pset_href'>
+	        	<div id='pset_{{Photoset.photoset_id}}' class='photoset'>
+	        		<div class='pset_title'><h1><span class='ord_{{Photoset.order_id}}'>{{ Photoset.title|upper }}</span></h1></div>
+	        	</div>
+			</a>
+	        {% endifequal %}
+	    	{% endfor %}
+	    {% endfor %}
+	    </div>
+	    
+	    <div class="pset_block">
+	    	<div id='contact_info' class='photoset'>
+	        		<a href="mailto:elena@kovtash.com">
+	        		<div class='contact_field'>
+	        			<div class='contact_title'><span>КОНТАКТЫ&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+	        			<div class='contact_details'><span>e-mail:&nbsp;&nbsp;</span><br/>
+	        			<span>elena@kovtash.com&nbsp;&nbsp;</span>
+	        			</div>
+	        		</div>
+	        		</a>
+	        </div>
+	        <div class='person'>
+	        	<pre class='person_name'><span>ЕЛЕНА КОВТАШ</span></pre>
+	        	<pre class='person_profession'><span>ДИЗАЙНЕР</span></pre>
+	        </div>
+	    </div>
+	    
+	    
+	    <div class="pset_block">
+	    {% for block in Photosets%}
+	    	{% for Photoset in block.Block_content %}
+	    	{% ifnotequal block.Block_id 1%}
+	    
+			<a href="{{GetPhotoset_url}}{{ Photoset.photoset_id }}" class='pset_href'>
+	        	<div id='pset_{{Photoset.photoset_id}}' class='photoset'>
+	        		<div class='pset_title'><h1><span class='ord_{{Photoset.order_id}}'>{{ Photoset.title|upper }}</span></h1></div>
+	        	</div>
+			</a>
+	        {% endifnotequal %}
+	    	{% endfor %}
+	    {% endfor %}
+	    </div>
+	  </div>
+	  </div>
+	  </div>
+	  <div class='admin_refresh'>{{RefreshLink}}</div>
+	  
+	  <!-- Yandex.Metrika counter -->
+		<div style="display:none;"><script type="text/javascript">
+		(function(w, c) {
+		    (w[c] = w[c] || []).push(function() {
+		        try {
+		            w.yaCounter3799855 = new Ya.Metrika(3799855);
+		             yaCounter3799855.clickmap(true);
+		             yaCounter3799855.trackLinks(true);
+		        
+		        } catch(e) { }
+		    });
+		})(window, 'yandex_metrika_callbacks');
+		</script></div>
+		<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script>
+		<noscript><div style="position:absolute"><img src="//mc.yandex.ru/watch/3799855" alt="" /></div></noscript>
+		<!-- /Yandex.Metrika counter -->
+  </body>
+</html>

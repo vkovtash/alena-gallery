@@ -1,0 +1,253 @@
+* {
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: -moz-none;
+-o-user-select: none;
+user-select: none;
+}
+
+  .photoset{
+  	width:	240px;
+  	height:	209px;
+  	position: relative;
+  	padding:0px;
+  	margin:5px;
+  	float:left;
+  	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+  	overflow: hidden;
+  }
+  
+  .pset_title{
+	top:30px;
+	left:5px;
+	position:relative;
+  }	
+  
+  .pset_title span{
+  	background-color:#000000;
+  	font-size:28px;
+  	font-family:'Arial';
+  	padding-right:20px;
+  	padding-bottom:0px;
+  	line-height:121%;
+  	word-spacing:30px;
+  	font-weight: normal;
+  }
+   
+  
+  span.ord_1 {
+  	background-color:#FFFFFF;
+  	color:#000000;
+  }
+  
+  .pset_href:hover h1 span.ord_1 {
+	background-color:#FFFFFF;
+  	color:#FF0000;
+  }
+  
+  span.ord_2 {
+  	background-color:#000000;
+  	color:#FFFFFF;
+  }
+  
+  .pset_href:hover span.ord_2 {
+	background-color:#FF0000;
+  	color:#FFFFFF;
+  }
+  
+  span.ord_3 {
+  	background-color:#FFFFFF;
+  	color:#000000;
+  }
+  
+  .pset_href:hover span.ord_3 {
+	background-color:#FFFFFF;
+  	color:#FF0000;
+  }
+  
+  span.ord_4 {
+  	background-color:#000000;
+  	color:#FFFFFF;
+  }
+  
+  .pset_href:hover span.ord_4 {
+	background-color:#FF0000;
+  	color:#FFFFFF;
+  }
+  
+  span.ord_5 {
+  	background-color:#000000;
+  	color:#FFFFFF;
+  }
+  
+  .pset_href:hover span.ord_5 {
+	background-color:#FF0000;
+  	color:#FFFFFF;
+  }
+  
+  span.ord_6 {
+  	background-color:#000000;
+  	color:#FFFFFF;
+  }
+  
+  .pset_href:hover span.ord_6 {
+	background-color:#FF0000;
+  	color:#FFFFFF;
+  }
+  
+  span.ord_7 {
+  	background-color:#FFFFFF;
+  	color:#000000;
+  }
+  
+  .pset_href:hover span.ord_7 {
+	background-color:#FFFFFF;
+  	color:#FF0000;
+  }
+  
+  span.ord_8 {
+  	background-color:#000000;
+  	color:#FFFFFF; 
+  }
+  
+  
+  .pset_href:hover span.ord_8 {
+	background-color:#FF0000;
+  	color:#FFFFFF;
+  }
+  
+	.admin_refresh {position:absolute;top:90%;left:0px;}
+	.admin_refresh a{text-decoration:none;color:#DDDDDD;cursor: default;}
+  
+	a.pset_href:link {color:#FFFFFF;text-decoration:none;} 
+	a.pset_href:visited {color:#FFFFFF;text-decoration:none;}
+	a.pset_href:hover {color:#FFFFFF;text-decoration:none;}
+	a.pset_href:active {color:#FFFFFF;text-decoration:none;}
+	
+	.pset_block{
+		position:relative;
+		margin:0px;
+		padding:0px;
+		clear:left;
+	}
+	
+	.contact_title{
+		top:20px;
+		left:5px;
+		position:relative;
+  	}	
+	
+	.contact_title span,
+	.contact_details span,
+	.contact_details a,
+	.person_name span,
+	.person_profession span
+	{
+		font-family: 'Arial';
+		//font-family: "old-standard-1","old-standard-2";
+	}
+	
+	.contact_title span{
+		background-color:#FFFFFF;
+		font-size:28px;
+		color:#000000;
+	}
+	
+	#contact_info{
+		background-color:#FF0000;
+		background-image:url('/src/themes/striped/stripe.png');
+	}
+	
+	#contact_info a{
+		text-decoration:none;
+	}
+	
+	.contact_details{
+		top:30px;
+		left:5px;
+		position:relative;
+  	}
+	
+	.contact_details span {
+		background-color:#000000;
+		font-size:1em;
+  		color:#FFFFFF;
+	}
+	
+	.contact_field{
+		background-color:#FF0000;
+		top:30px;
+		position:relative;
+		height:179px;
+		-webkit-border-bottom-right-radius: 10px;
+		-webkit-border-bottom-left-radius: 10px;
+		-moz-border-radius-bottomright: 10px;
+		-moz-border-radius-bottomleft: 10px;
+		border-bottom-right-radius: 10px;
+		border-bottom-left-radius: 10px;
+	}
+	
+	.person{
+		background-color:#742345;
+		background-image:url('/src/themes/striped/stripe.png');
+		width:	740px;
+		height:	209px;
+		position: relative;
+		padding:0px;
+		margin:5px;
+		float:left;
+		border-radius:10px;
+		overflow: hidden;
+	}
+	
+	.person_name{
+		margin-bottom:2px;
+		margin-top:40px;
+		margin-left:30px;
+	}
+	
+	.person_name span{
+		background-color:#742345;
+		font-size:48px;
+  		color:#FFFFFF;
+  		font-weight: bold;
+  		padding-right:200px;
+  		padding-left:10px;
+	}
+	
+	.person_profession{
+		margin-top:2px;
+	}
+	
+	.person_profession span{
+		background-color:#742345;
+		font-size:48px;
+  		color:#FFFFFF;
+  		padding-right:200px;
+  		padding-left:10px;
+  		margin-left:30px;
+	}
+	
+	.center1{
+        display: table;
+        height: 100%;
+        width: 100%;
+        #position: relative;
+        overflow: hidden; 
+	}
+
+	.center2{
+         #position: absolute;
+         #top: 50%;
+         display: table-cell;
+         vertical-align: middle;
+	}
+	
+	.center3{
+        display: table;
+        width:1000px;
+        margin-left:auto;
+        margin-right:auto;
+	}

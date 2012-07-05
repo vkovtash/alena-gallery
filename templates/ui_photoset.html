@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    	<meta name="keywords" content="иванова елена алена олена ковташ дизайн фирменный стиль логотип цвет композиция макет верстка реклама журнал глянцевый журнал периодика полиграфия цветокоррекция медиа мультимедиа промоушн топ-бьюти космополитан каллиграфия графика графические работы рисунок от руки иллюстрация сайт ip-телефония 1rock рбк красота рубрика тренд мода разворот полоса корпоративный дизайн ГИС-ассоциация приглашение mamap&papas philips ракурс micallef вайт-медиа interhomeexpo комикс мастер и маргарита булгаков жизнь насекомых пелевин открытка инфографика иконка векторная графика растровая графика каталог ежегодный отчет шрифт буква газеты буклет вывеска визитка плакат обложка диплом мгу факультет журналистики диск Ivanova Elena Olena Olena kovtash design corporate identity logo color track layout layout advertising magazine glossy magazine periodicals printing color correction media multimedia promotion top beauty Cosmopolitan calligraphy graphic graphic works freehand illustration site ip-telephony 1rock RBK beauty topic trend fashion spread strip corporate design GIS-Association invitation mamap & papas philips racurs micallef wite-Media interhomeexpo Comics Master and Margarita Bulgakov Pelevin insect life postcard infographics icon vector raster graphics directory annual report letter newspaper business card brochure sign poster cover Diploma Moscow State University Department of Journalism disk"/>
+
+        <title>Елена Ковташ. Дизайнер: {{Photoset_title}}</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script src="./src/galleria.js"></script>
+        <style>
+            html,body{background:#ffffff}
+            #galleria{width:990px;height:640px;margin:20px auto}
+        </style>
+        <link rel="shortcut icon" href="src/themes/striped/favicon.ico"/>
+    
+    
+	    <!-- Google Analytics-->
+	    <script type="text/javascript">
+		
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-20850399-1']);
+		  _gaq.push(['_trackPageview']);
+		
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		
+		</script>    
+		<!--Google Analytics-->
+     
+    </head>
+	<body>
+	    <div id="galleria">
+	    	<div>
+	    		{% for Photo in Photos %}
+					<a href="#{{ Photo.order_id }}"><span>{{ Photo.title|upper }} - {{ Photo.description }}</span></a><br/>
+				{% endfor %}
+	    	</div>
+	    {% for Photo in Photos %}
+	    	<a name="{{ Photo.order_id }}" href="{{ Photo.large_source }}">
+	        	<img src="{{ Photo.small_source }}" alt="{{ Photo.description|linebreaksbr }}" title="{{ Photo.title|upper }}">
+	        
+	        <div>
+	        <h1 class='info_title'><span>{{ Photo.title|upper }}</span></h1>
+	        <h2 class='info_description'><span class="info-desc-text">{{ Photo.description|linebreaksbr }}</span>
+	        	<div class='info-author'>
+	        		<span class='info-author-title'>дизайнер</span>
+	        		<span class='info-author-name'>Елена Ковташ</span>
+	        	</div>
+	        </h2>
+	        </div>
+	        </a>
+	    {% endfor %}
+	    
+	    </div>
+		
+		<div class='admin_refresh'>{{RefreshLink}}</div>
+    
+    
+		<script>
+		
+			// Load theme
+			Galleria.loadTheme('./src/themes/striped/galleria.striped.js');
+			
+			// run galleria and add some options
+			$('#galleria').galleria({
+			   data_config: function(img) {
+			       return {
+			           description: $(img).next().children('.info_description').html(),
+			           title:	$(img).next().children('.info_title').html()
+			       };
+			   }
+			});
+		</script>
+    
+       <!-- Yandex.Metrika counter -->
+		<div style="display:none;"><script type="text/javascript">
+		(function(w, c) {
+		    (w[c] = w[c] || []).push(function() {
+		        try {
+		            w.yaCounter3799855 = new Ya.Metrika(3799855);
+		             yaCounter3799855.clickmap(true);
+		             yaCounter3799855.trackLinks(true);
+		        
+		        } catch(e) { }
+		    });
+		})(window, 'yandex_metrika_callbacks');
+		</script></div>
+		<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script>
+		<noscript><div style="position:absolute"><img src="//mc.yandex.ru/watch/3799855" alt="" /></div></noscript>
+		<!-- /Yandex.Metrika counter -->
+    
+    </body>
+</html>

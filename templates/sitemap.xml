@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for Photoset in Photosets%}
+	<url>
+		<loc>http://elena.kovtash.com{{GetPhotoset_url}}{{ Photoset.photoset_id }}</loc>
+	</url>
+{% endfor %}
+</urlset>

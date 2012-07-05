@@ -1,0 +1,16 @@
+application: olena-kovtash
+version: 1b
+runtime: python
+api_version: 1
+
+handlers:
+- url: /src
+  static_dir: src
+- url: /favicon.ico
+  static_files: src/themes/striped/favicon.ico
+  upload: src/themes/striped/favicon.ico
+- url: /robots.txt
+  static_files: robots.txt 
+  upload: robots.txt
+- url: /.*
+  script: main.py
