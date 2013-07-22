@@ -3,14 +3,14 @@
 #
 
 import webapp2
-from flig_web_ui_main import UI_Main
-from flig_web_wrk import WRK_UpdateGal
+from flig_web_ui_main import UIMain
+from flig_web_wrk import WRKUpdateGal
+from flig_web_ui_photoset import UIPhotoset
 from sitemap import Sitemap
-from flig_web_ui_photoset import UI_Photoset
 
-application = webapp2.WSGIApplication([('/', UI_Main),
-									  ('/update_gal', WRK_UpdateGal),
-									  ('/photoset', UI_Photoset),
+application = webapp2.WSGIApplication([('/', UIMain),
+									  ('/update_gal', WRKUpdateGal),
+									  ('/photoset', UIPhotoset),
 									  ('/sitemap.xml',Sitemap)
 									],
                                      debug=True)

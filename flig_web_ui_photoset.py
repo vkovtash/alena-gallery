@@ -4,7 +4,6 @@
 
 import webapp2
 import jinja2
-import cgi
 import os
 from google.appengine.api import users
 from google.appengine.ext import db		
@@ -23,30 +22,30 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'])
 JINJA_ENVIRONMENT.filters['linebreaksbr'] = linebreaksbr
 
-class UI_Photoset(webapp2.RequestHandler):
+class UIPhotoset(webapp2.RequestHandler):
 	def get(self):
-		PhotosetID=cgi.escape(self.request.get('id'))
+		photoset_id = self.request.get('id')
 		       
-		Tmain_values = {
-			"Photos": self.GetPhotosetPhotos(PhotosetID),
-            "Photoset_title": self.GetPhotosetTitle(PhotosetID),
+		template_values = {
+			"Photos": self.get_photoset_photos(photoset_id),
+            "Photoset_title": self.get_photoset_title(photoset_id),
             "RefreshLink":""
 			}
 			
-		CUser = users.get_current_user()
-		if CUser:
+		current_user = users.get_current_user()
+		if current_user:
 			if users.is_current_user_admin():
-				Tmain_values["RefreshLink"]="<a href='/update_gal?photoset_id="+PhotosetID+"'> Refresh</a>"
+				template_values["RefreshLink"] = "".join(["<a href='/update_gal?photoset_id=",photoset_id,"'> Refresh</a>"])
 			else:
-				Tmain_values["RefreshLink"]=""
+				template_values["RefreshLink"] = ""
 		else:
-			Tmain_values["RefreshLink"]="<a  href='"+users.create_login_url(self.request.uri)+"'> *</a>"
+			template_values["RefreshLink"] = "".join(["<a  href='",users.create_login_url(self.request.uri),"'> *</a>"])
 
 		template = JINJA_ENVIRONMENT.get_template('templates/ui_photoset.html')
-		self.response.write(template.render(Tmain_values))
+		self.response.write(template.render(template_values))
         
-	def GetPhotosetPhotos(self,PhotosetID):
-		return db.GqlQuery("SELECT * FROM Photos where photoset_id=:1 and isprimary=false ORDER BY order_id",PhotosetID).fetch(1000)
+	def get_photoset_photos(self,photoset_id):
+		return db.GqlQuery("SELECT * FROM Photos where photoset_id=:1 and isprimary=false ORDER BY order_id",photoset_id).fetch(1000)
     
-	def GetPhotosetTitle(self,PhotosetID):
-		return db.GqlQuery("SELECT * FROM Photosets where photoset_id=:1",PhotosetID).get().title
+	def get_photoset_title(self,photoset_id):
+		return db.GqlQuery("SELECT * FROM Photosets where photoset_id=:1",photoset_id).get().title

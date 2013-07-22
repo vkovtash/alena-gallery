@@ -13,10 +13,10 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'])
 
-class UI_Main(webapp2.RequestHandler):
+class UIMain(webapp2.RequestHandler):
 	def get(self):
-		Tmain_values = {
-			"Photosets": self.GetPhotosetsBlocks(4),
+		template_values = {
+			"Photosets": self.get_photosets_blocks(4),
 			"GetPhotoset_url":"/photoset?id=",
 			"RefreshLink":""
 			}
@@ -24,45 +24,44 @@ class UI_Main(webapp2.RequestHandler):
 		CUser = users.get_current_user()
 		if CUser:
 			if users.is_current_user_admin():
-				Tmain_values["RefreshLink"]="<a href='/update_gal?photoset_id=1111111111'> Refresh</a>"
+				template_values["RefreshLink"] = "<a href='/update_gal'> Refresh</a>"
 			else:
-				Tmain_values["RefreshLink"]=""
+				template_values["RefreshLink"] = ""
 		else:
-			Tmain_values["RefreshLink"]="<a class='admin_refresh' href='"+users.create_login_url(self.request.uri)+"'> *</a>"    
+			template_values["RefreshLink"] = "".join(["<a class='admin_refresh' href='",users.create_login_url(self.request.uri),"'> *</a>"])    
 		
 		template = JINJA_ENVIRONMENT.get_template('templates/ui_main.html')
-		self.response.write(template.render(Tmain_values))
+		self.response.write(template.render(template_values))
         
-	def GetPhotosetsBlocks(self,block_size):
-	   	Photosets = []
-	   	Photoset_block = []
+	def get_photosets_blocks(self,block_size):
+	   	photosets = []
+	   	photoset_block = []
 	   	b = bc = 1
-	   	Photosets.append({"Block_content":Photoset_block,"Block_id":bc})
+	   	photosets.append({"Block_content":photoset_block,"Block_id":bc})
 		
-		QPhotosets = db.GqlQuery("SELECT * FROM Photosets ORDER BY order_id")
-		QPhoto =  db.GqlQuery("SELECT * FROM Photos where photo_id=:1")
+		photosets_query = db.GqlQuery("SELECT * FROM Photosets ORDER BY order_id")
+		photo_query =  db.GqlQuery("SELECT * FROM Photos where photo_id=:1")
 
-		for QPhotoset in QPhotosets:
-			Photoset = {}
-			Photoset["title"] = QPhotoset.title
-			Photoset["photoset_id"] = QPhotoset.photoset_id
-			Photoset["order_id"] = QPhotoset.order_id
+		for stored_photoset in photosets_query:
+			photoset = {}
+			photoset["title"] = stored_photoset.title
+			photoset["photoset_id"] = stored_photoset.photoset_id
+			photoset["order_id"] = stored_photoset.order_id
 	    	
-			QPhoto.bind(QPhotoset.primary)
+			photo_query.bind(stored_photoset.primary)
 			
-			for photo in QPhoto:
-				Photoset["thumbnail_url"] = photo.small_source
-				Photoset["thumbnail_width"] = photo.small_width
-				Photoset["thumbnail_height"] = photo.small_height
+			for photo in photo_query:
+				photoset["thumbnail_url"] = photo.small_source
+				photoset["thumbnail_width"] = photo.small_width
+				photoset["thumbnail_height"] = photo.small_height
 			
-			Photoset_block.append(Photoset)
+			photoset_block.append(photoset)
 			
 			if b >= 4:
 				b = 0
 				bc = bc+1
-				Photoset_block = []
-				Photosets.append({"Block_content":Photoset_block,"Block_id":bc})
+				photoset_block = []
+				photosets.append({"Block_content":photoset_block,"Block_id":bc})
 			
 			b = b+1
-	    
-		return Photosets
+		return photosets
