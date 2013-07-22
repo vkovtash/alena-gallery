@@ -12,12 +12,11 @@ from jinja2 import Markup, escape
 
 """ Convert linebreaks to <br/>s and escape each line.  Return value is marked 'safe' """
 def linebreaksbr(value):
-    escaped_lines = []
+    lines = []
     for line in value.split('\n'):
-        escaped_lines.append(escape(line))
-    escaped = "<br/>".join(escaped_lines)
-    # mark as safe
-    return Markup(escaped)
+        lines.append(line)
+    result = "<br/>".join(lines)
+    return Markup(result)
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
