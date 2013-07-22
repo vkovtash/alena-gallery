@@ -1,7 +1,14 @@
-application: olena-kovtash
+application: olena-kovtash-hrd
 version: 1b
-runtime: python
+runtime: python27
 api_version: 1
+threadsafe: no
+
+libraries:
+- name: jinja2
+  version: 2.6
+- name: webapp2
+  version: 2.5.2
 
 handlers:
 - url: /src
@@ -13,4 +20,4 @@ handlers:
   static_files: robots.txt 
   upload: robots.txt
 - url: /.*
-  script: main.py
+  script: main.application
