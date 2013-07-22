@@ -39,24 +39,21 @@
 		<!--Google Analytics-->
   </head>
   
-  
-  
   <body>
 	  <div class='center1'>
 	  <div class='center2'>
 	  <div class='center3'>
 		<div class="pset_block">
 		{% for block in Photosets%}
+		{% if block.Block_id == 1%}
 	    	{% for Photoset in block.Block_content %}
-	    	{% if block.Block_id == 1%}
-	    
-			<a href="{{GetPhotoset_url}}{{ Photoset.photoset_id }}" class='pset_href'>
-	        	<div id='pset_{{Photoset.photoset_id}}' class='photoset'>
-	        		<div class='pset_title'><h1><span class='ord_{{Photoset.order_id}}'>{{ Photoset.title|upper }}</span></h1></div>
-	        	</div>
-			</a>
-	        {% endif %}
+				<a href="{{GetPhotoset_url}}{{ Photoset.photoset_id }}" class='pset_href'>
+		        	<div id='pset_{{Photoset.photoset_id}}' class='photoset'>
+		        		<div class='pset_title'><h1><span class='ord_{{Photoset.order_id}}'>{{ Photoset.title|upper }}</span></h1></div>
+		        	</div>
+				</a>
 	    	{% endfor %}
+	    {% endif %}
 	    {% endfor %}
 	    </div>
 	    
@@ -77,21 +74,19 @@
 	        </div>
 	    </div>
 	    
-	    
-	    <div class="pset_block">
 	    {% for block in Photosets%}
-	    	{% for Photoset in block.Block_content %}
-	    	{% if block.Block_id != 1%}
-	    
-			<a href="{{GetPhotoset_url}}{{ Photoset.photoset_id }}" class='pset_href'>
-	        	<div id='pset_{{Photoset.photoset_id}}' class='photoset'>
-	        		<div class='pset_title'><h1><span class='ord_{{Photoset.order_id}}'>{{ Photoset.title|upper }}</span></h1></div>
-	        	</div>
-			</a>
-	        {% endif %}
-	    	{% endfor %}
+	    {% if block.Block_id != 1%}
+		    <div class="pset_block">
+		    	{% for Photoset in block.Block_content %}
+				<a href="{{GetPhotoset_url}}{{ Photoset.photoset_id }}" class='pset_href'>
+		        	<div id='pset_{{Photoset.photoset_id}}' class='photoset'>
+		        		<div class='pset_title'><h1><span class='ord_{{Photoset.order_id}}'>{{ Photoset.title|upper }}</span></h1></div>
+		        	</div>
+				</a>
+		    	{% endfor %}
+		    </div>
+	    {% endif %}
 	    {% endfor %}
-	    </div>
 	  </div>
 	  </div>
 	  </div>

@@ -7,6 +7,7 @@ import jinja2
 import os
 from google.appengine.api import users
 from google.appengine.ext import db
+import logging
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -34,35 +35,34 @@ class UI_Main(webapp2.RequestHandler):
         
 	def GetPhotosetsBlocks(self,block_size):
 	   	Photosets = []
-	   	Photoset_block=[]
-	   	b=bc=1
+	   	Photoset_block = []
+	   	b = bc = 1
+	   	Photosets.append({"Block_content":Photoset_block,"Block_id":bc})
 		
 		QPhotosets = db.GqlQuery("SELECT * FROM Photosets ORDER BY order_id")
 		QPhoto =  db.GqlQuery("SELECT * FROM Photos where photo_id=:1")
-		
+
 		for QPhotoset in QPhotosets:
 			Photoset = {}
 			Photoset["title"] = QPhotoset.title
-			Photoset["photoset_id"]= QPhotoset.photoset_id
-			Photoset["order_id"]=QPhotoset.order_id
+			Photoset["photoset_id"] = QPhotoset.photoset_id
+			Photoset["order_id"] = QPhotoset.order_id
 	    	
 			QPhoto.bind(QPhotoset.primary)
 			
 			for photo in QPhoto:
-				
-				Photoset["thumbnail_url"]=photo.small_source
-				Photoset["thumbnail_width"]=photo.small_width
-				Photoset["thumbnail_height"]=photo.small_height
-			
+				Photoset["thumbnail_url"] = photo.small_source
+				Photoset["thumbnail_width"] = photo.small_width
+				Photoset["thumbnail_height"] = photo.small_height
 			
 			Photoset_block.append(Photoset)
 			
-			if b>=4:
+			if b >= 4:
+				b = 0
+				bc = bc+1
+				Photoset_block = []
 				Photosets.append({"Block_content":Photoset_block,"Block_id":bc})
-				b=0
-				bc=bc+1
-				Photoset_block=[]
 			
-			b=b+1
+			b = b+1
 	    
 		return Photosets
